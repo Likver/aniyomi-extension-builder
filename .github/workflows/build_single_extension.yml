@@ -4,17 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       lang:
-        description: es
+        description: Extension language (en, ar, es, pt...)
         required: true
       extension:
-        description: Cuevana
+        description: Target extension name
         required: true
       git-repo:
-        description: Likver/aniyomi-extensions-fork
+        description: Git repo (Optional, defaults to <your name>/aniyomi-extensions
         default: ''
         required: false
       git-ref:
-        description: cuevana-new-url
+        description: Git Ref (Optional, defaults to master)
         default: 'master'
         required: false
 
@@ -33,7 +33,7 @@ jobs:
         if: env.REPO == ''
         run: |
           set -e
-          echo "REPO=${{ github.repository_owner }}/aniyomi-extensions-fork" >> $GITHUB_ENV
+          echo "REPO=${{ github.repository_owner }}/aniyomi-extensions" >> $GITHUB_ENV
       - name: Clone Repository (Latest)
         uses: actions/checkout@v3
         with:
